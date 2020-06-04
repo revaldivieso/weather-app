@@ -13,7 +13,8 @@ class App extends Component {
     wind_speed: '',
     city: '',
     country: '',
-    visibility: '',
+    feels_like: '',
+    clouds_all: '',
     error: null,
   };
 
@@ -24,7 +25,7 @@ class App extends Component {
     const countryValue = country.value;
 
     if (cityValue && countryValue) {
-      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue},${countryValue}&appid=${WEATHER_KEY}`;
+      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue},${countryValue}&appid=${WEATHER_KEY}&units=metric&lang={sp}`;
       const response = await fetch(API_URL);
       const data = await response.json();
 
@@ -36,6 +37,8 @@ class App extends Component {
         city: data.name,
         country: data.sys.country,
         visibility: data.visibility,
+        feels_like: data.main.feels_like,
+        clouds_all: data.clouds.all,
         error: null,
       });
     } else {

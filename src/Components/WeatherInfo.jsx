@@ -11,14 +11,15 @@ const WeatherInfo = (props) => {
       {props.temperature ? (
         <div className='card card-body'>
           <p>
-            Localización: {props.city} {props.country},
+            Localización: {props.city}, {props.country}
           </p>
-          <p>
-            Temperatura: {props.temperature} °C, {props.description}
-          </p>
+          <p>Temperatura: {props.temperature} °C</p>
+          <p> Sensación térmica: {props.feels_like} °C</p>
+          <p>Condición climática: {props.description}</p>
+          <p>Nubosidad: {props.clouds_all} %</p>
           <p>Humedad: {props.humidity} %</p>
-          <p>Velocidad del viento: {props.wind_speed}</p>
-          <p>Visibilidad: {props.visibility}</p>
+          <p>Velocidad del viento: {props.wind_speed} m/s</p>
+          <p>Visibilidad: {props.visibility} m</p>
         </div>
       ) : (
         <div className='card card-body'></div>
