@@ -53,7 +53,8 @@ const WeatherForm = (props) => {
             autoFocus
           />
         </div>
-        <button className='btn btn-success btn-block'>Obtener clima</button>
+
+        <button className='btn btn-success'>Obtener clima</button>
       </form>
     </div>
   );

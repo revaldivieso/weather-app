@@ -16,7 +16,6 @@ class App extends Component {
     city: '',
     country: '',
     feels_like: '',
-
     error: null,
   };
 

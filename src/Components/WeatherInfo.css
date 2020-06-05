@@ -1,8 +1,26 @@
 .card {
-    display: flex
+    display: flex;
+
 }
 
 .form-group {
 
     display: flex;
+}
+
+
+
+@media only screen and (min-width: 767px) {
+    .card {
+        display: flex
+    }
+
+    .form-group {
+
+        display: flex;
+    }
+
+    .btn {
+        display: flex;
+    }
 }
