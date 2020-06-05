@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherInfo.css';
 import { AutoComplete } from 'antd';
 import Countries from './Country';
 import CityChile from './CityChile';
@@ -36,7 +37,7 @@ const WeatherForm = (props) => {
             onChange={onChangeCity}
             onSearch={onSearch}
             placeholder='Escribe tu ciudad'
-            city={city}
+            options={city}
             autoFocus
           />
         </div>
