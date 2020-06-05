@@ -1,4 +1,4 @@
-![logo](readmeImages/logo.jpg)
+![logo](readmeImage/logo.jpg)
 
 ## Descripción del proyecto 💻
 
