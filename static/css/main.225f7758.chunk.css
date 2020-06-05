@@ -39,7 +39,7 @@ code {
 }
 
 body {
-    background-image: url(./static/media/fondo.b8e0d094.jpg);
+    background-image: url(static/media/fondo.b8e0d094.jpg);
     background-attachment: fixed;
     background-position: 50%;
     background-repeat: no-repeat;
