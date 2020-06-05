@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Layout from './Components/Layout';
 import WeatherInfo from './Components/WeatherInfo';
 import WeatherForm from './Components/WeatherForm';
 import { WEATHER_KEY } from './Keys';
+import logo from './Images/logo.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -14,7 +16,7 @@ class App extends Component {
     city: '',
     country: '',
     feels_like: '',
-    clouds_all: '',
+
     error: null,
   };
 
@@ -25,7 +27,7 @@ class App extends Component {
     const countryValue = country.value;
 
     if (cityValue && countryValue) {
-      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue},${countryValue}&appid=${WEATHER_KEY}&units=metric&lang={sp}`;
+      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue},${countryValue}&appid=${WEATHER_KEY}&units=metric&lang=es`;
       const response = await fetch(API_URL);
       const data = await response.json();
 
@@ -39,6 +41,7 @@ class App extends Component {
         visibility: data.visibility,
         feels_like: data.main.feels_like,
         clouds_all: data.clouds.all,
+
         error: null,
       });
     } else {
@@ -48,14 +51,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container p-4'>
-        <div className='row'>
-          <div className='col-md-4 mx-auto'>
-            <WeatherForm getWeather={this.getWeather} />
-            <WeatherInfo {...this.state} />
+      <Layout>
+        <header className='app_header'>
+          <img src={logo} className='logo' alt='logo' />
+        </header>
+        <div className='container p-4'>
+          <div className='row'>
+            <div className='col-md-6 mx-auto'>
+              <WeatherForm getWeather={this.getWeather} />
+              <br></br>
+              <WeatherInfo {...this.state} />
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

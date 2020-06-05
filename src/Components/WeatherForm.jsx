@@ -1,28 +1,60 @@
 import React from 'react';
+import { AutoComplete } from 'antd';
+import Countries from './Country';
+import CityChile from './CityChile';
 
-const WeatherForm = (props) => (
-  <div className='card card-body'>
-    <form onSubmit={props.getWeather}>
-      <div className='form-group'>
-        <input
-          type='text'
-          name='city'
-          placeholder='Escribe tu ciudad'
-          className='form-control'
-          autoFocus
-        />
-      </div>
-      <div className='form-group'>
-        <input
-          type='text'
-          name='country'
-          placeholder='Escribe tu pais'
-          className='form-control'
-          autoFocus
-        />
-      </div>
-      <button className='btn btn-success btn-block'>Go</button>
-    </form>
-  </div>
-);
+const WeatherForm = (props) => {
+  const [options, setOptions] = React.useState([]);
+  const [city, setCity] = React.useState(undefined);
+  const onChangeCity = (searchCity) => {
+    setCity(
+      !searchCity
+        ? []
+        : CityChile.filter((city) =>
+            city.toLowerCase().includes(searchCity.toLowerCase())
+          ).map((city) => ({ value: city }))
+    );
+  };
+  const onSearch = (searchText) => {
+    setOptions(
+      !searchText
+        ? []
+        : Countries.filter((c) =>
+            c.toLowerCase().includes(searchText.toLowerCase())
+          ).map((c) => ({ value: c }))
+    );
+  };
+  return (
+    <div className='card card-body'>
+      <form autocomplete='off' onSubmit={props.getWeather}>
+        <div className='form-group'>
+          <AutoComplete
+            type='text'
+            id='city'
+            name='city'
+            style={{ width: 450 }}
+            onChange={onChangeCity}
+            onSearch={onSearch}
+            placeholder='Escribe tu ciudad'
+            city={city}
+            autoFocus
+          />
+        </div>
+        <div className='form-group'>
+          <AutoComplete
+            type='text'
+            id='country'
+            name='country'
+            options={options}
+            style={{ width: 450 }}
+            onSearch={onSearch}
+            placeholder='Escribe tu país'
+            autoFocus
+          />
+        </div>
+        <button className='btn btn-success btn-block'>Obtener clima</button>
+      </form>
+    </div>
+  );
+};
 export default WeatherForm;
